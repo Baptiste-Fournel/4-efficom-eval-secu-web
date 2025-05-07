@@ -1,5 +1,6 @@
 const User = require('./../model/user.model.js');
 const bcrypt = require('bcrypt');
+const { id } = require('choco');
 const jwt = require('jsonwebtoken');
 const { where } = require('sequelize');
 
@@ -24,7 +25,7 @@ const login = (req, res, next) => {
 }
 
 const signIn = async (req,res,next) => {
-    let member = await Role.findOne({ where: req.body.roleId });
+    let member = await Role.findOne({ where: { id: req.body.roleId } });
     if (!member) {
         return res.status(404).json({ message: "Le rôle Member n'as pas été trouvé" });
     }
