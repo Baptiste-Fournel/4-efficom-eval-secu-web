@@ -52,8 +52,11 @@ const update = async (req, res, next) => {
 }
 
 const remove = async (req, res, next) => {
-    let result = await User.remove(req.params.id);
-    res.status(200).json(result);
+    let result = await User.destroy({ where: { id: req.params.id } });
+    if (result !== 1) {
+        return res.status(404).json({ message: "L'utilisateur n'existe pas" });
+    }
+    res.status(200).json({ message: "L'utilisateur a bien été supprimé" });
 }
 
 const addRole = async (req, res, next) => {
