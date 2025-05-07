@@ -14,8 +14,8 @@ const getById = async (req, res, next) => {
             id: req.params.id
         }
     });
-    if(!user) {
-        return res.status(404).json({ message: "Utilisateur non trouvé" });
+    if (!result) {
+        return res.status(404).json({ message: "L'utilisateur n'existe pas" });
     }
     res.status(200).json(result);
 }
