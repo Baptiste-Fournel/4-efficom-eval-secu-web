@@ -1,7 +1,7 @@
 const Role = require('../model/role.schema.js');
 
-const getAll = (req, res, next) => {
-    let result = Role.findAll();
+const getAll = async (req, res, next) => {
+    let result = await Role.findAll();
     res.status(200).json(result);
 }
 
@@ -26,13 +26,13 @@ const create = async (req, res, next) => {
     }
 }
 
-const update = (req, res, next) => {
-    let result = Role.updateOne(req.body, { id: req.params.id });
+const update = async (req, res, next) => {
+    let result = await Role.updateOne(req.body, { id: req.params.id });
     res.status(201).json(result);
 }
 
-const remove = (req, res, next) => {
-    let result = Role.remove(req.params.id);
+const remove = async (req, res, next) => {
+    let result = await Role.remove(req.params.id);
     res.status(200).json(result);
 }
 
