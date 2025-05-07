@@ -36,4 +36,4 @@ const remove = async (req, res, next) => {
     res.status(200).json(result);
 }
 
-module.exports = { getAll, create, getById, update, remove, addRole, removeRole };
+module.exports = { getAll, create, getById, update, remove };
