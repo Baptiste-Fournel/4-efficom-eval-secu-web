@@ -27,7 +27,7 @@ const login = (req, res, next) => {
 const signIn = async (req,res,next) => {
     let member = await Role.findOne({ where: { id: req.body.roleId } });
     if (!member) {
-        return res.status(404).json({ message: "Le rôle Member n'as pas été trouvé" });
+        return res.status(404).json({ message: "Aucun rôle n'as pas été trouvé" });
     }
     try {
         let result = await User.create({
