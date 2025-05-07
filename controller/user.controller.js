@@ -2,8 +2,8 @@ const User = require('./../model/user.schema.js');
 const Role = require('../model/role.schema.js');
 const bcrypt = require('bcrypt');
 
-const getAll = (req, res, next) => {
-    let result = User.findAll();
+const getAll = async (req, res, next) => {
+    let result = await User.findAll();
     res.status(200).json(result);
 }
 
@@ -37,13 +37,13 @@ const create = async (req, res, next) => {
     }
 }
 
-const update = (req, res, next) => {
-    let result = User.updateOne(req.body, { id: req.params.id });
+const update = async (req, res, next) => {
+    let result = await User.updateOne(req.body, { id: req.params.id });
     res.status(201).json(result);
 }
 
-const remove = (req, res, next) => {
-    let result = User.remove(req.params.id);
+const remove = async (req, res, next) => {
+    let result = await User.remove(req.params.id);
     res.status(200).json(result);
 }
 
