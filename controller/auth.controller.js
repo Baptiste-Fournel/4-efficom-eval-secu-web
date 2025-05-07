@@ -4,8 +4,8 @@ const { id } = require('choco');
 const jwt = require('jsonwebtoken');
 const { where } = require('sequelize');
 
-const login = (req, res, next) => {
-    let user = User.getByEmail(req.body.email);
+const login = async (req, res, next) => {
+    const user = await User.findOne({where: {email: req.body.email},include: [Role]});
     if (!user) {
         return res.status(401).json({ message: "Email ou mot de passe incorrect" });
     }
