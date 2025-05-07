@@ -6,15 +6,6 @@ const messageRouter = require('./route/message.route.js');
 const roleRouter = require('./route/role.route.js');
 const {connect} = require('./framework/connection.js');
 const sync = require('./framework/sync.js');
-const rateLimit = require('express-rate-limit');
-
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, 
-    max: 100,
-    stndardHeaders: 'draft-8',
-    legacyHeaders: false,
-    message: "Trop de requêtes, veuillez réessayer plus tard"
-});
 
 const database = async () => {
     await connect();
@@ -24,7 +15,6 @@ const database = async () => {
 database();
 
 app.use(express.json());
-app.use(limiter); 
 
 app.use('/user',userRouter);
 app.use('/auth',authRouter);
