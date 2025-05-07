@@ -6,12 +6,12 @@ const messageRouter = require('./route/message.route.js');
 const roleRouter = require('./route/role.route.js');
 const {connect} = require('./framework/connection.js');
 const sync = require('./framework/sync.js');
-import { rateLimit } from 'express-rate-limit'
+const rateLimit = require('express-rate-limit');
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, 
     max: 100,
-    stndardHeaders: draft-8,
+    stndardHeaders: 'draft-8',
     legacyHeaders: false,
     message: "Trop de requêtes, veuillez réessayer plus tard"
 });
